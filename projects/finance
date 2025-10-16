@@ -1,0 +1,49 @@
+# 💰 Credit Risk & Personal Loan Acceptance Analysis
+
+### 🧩 Project Overview
+This project explores the factors influencing **personal loan acceptance** using real-world bank data.  
+The goal was to help financial institutions identify the most promising clients and reduce marketing costs.
+
+---
+
+### 📊 Exploratory Data Analysis (EDA)
+- Cleaned and processed missing data.
+- Performed **One-Hot Encoding** for categorical variables such as *Family* and *Education*.
+- Found that **Income** and **CD Account ownership** are the strongest predictors of loan acceptance.
+- Visualized income distribution and acceptance patterns using Python (Matplotlib & Seaborn).
+
+---
+
+### 🧠 Model Development
+Built a **Logistic Regression** model with:
+- `scikit-learn` for model training and evaluation  
+- `train_test_split` for data partition  
+- Metrics: **Precision**, **Recall**, and **Confusion Matrix**
+
+**Performance:**
+- Precision: 91%  
+- Recall: 89%  
+*(adjust these with your real values once you finalize your model)*
+
+---
+
+### 🚀 Key Insights
+- Clients with higher income (>100K) have significantly higher acceptance rates.  
+- Having a **CD Account** increases the likelihood of accepting a personal loan.  
+- Targeting these segments can reduce acquisition costs by up to **(100 - Precision)%**.
+
+---
+
+### 🛠️ Tech Stack
+Python | Pandas | NumPy | Matplotlib | Scikit-Learn | Google Colab
+
+---
+
+### 📂 Files
+- `credit_risk_analysis.ipynb`: Complete notebook with EDA, modeling, and conclusions.  
+- `README.md`: Project overview and summary.
+
+---
+
+### 🔗 View / Run Notebook
+[Open in Google Colab](https://colab.research.google.com/github/oddy04/miguelperez-dataportfolio/blob/main/projects/finance/credit_risk_analysis.ipynb)

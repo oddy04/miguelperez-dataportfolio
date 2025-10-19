@@ -1,0 +1,48 @@
+-- 1. VALIDACIÓN DEL ESQUEMA ESTRELLA
+SELECT
+    t1.nombre_juego,
+    t1.anio_lanzamiento,
+    t2.nombre_editorial,
+    t3.nombre_genero,
+    t1.global_sales
+FROM
+    `vgsales_analisis_sql.fact_ventas_juegos` AS t1 
+INNER JOIN `vgsales_analisis_sql.dim_editoriales` AS t2 
+    ON t1.id_editorial = t2.id_editorial
+INNER JOIN `vgsales_analisis_sql.dim_generos` AS t3 
+    ON t1.id_genero = t3.id_genero
+LIMIT 5;
+
+-- 2. ANÁLISIS DE RENTABILIDAD: TOP 10 EDITORIALES POR VENTA PROMEDIO (CTEs)
+WITH EditorialPerformance AS (
+  SELECT
+    f.id_editorial,
+    COUNT(1) AS num_titulos,
+    SUM(f.global_sales) AS total_sales,
+    AVG(f.global_sales) AS avg_sales
+  FROM `vgsales_analisis_sql.fact_ventas_juegos` f
+  GROUP BY f.id_editorial
+)
+SELECT
+  ep.id_editorial,
+  d.nombre_editorial,
+  ep.num_titulos,
+  ep.total_sales,
+  ep.avg_sales
+FROM EditorialPerformance ep
+LEFT JOIN `vgsales_analisis_sql.dim_editoriales` d 
+  ON ep.id_editorial = d.id_editorial
+ORDER BY ep.avg_sales DESC
+LIMIT 10;
+
+-- 3. ANÁLISIS DE TENDENCIAS TEMPORALES: VENTAS POR GÉNERO Y AÑO
+SELECT
+  f.anio_lanzamiento,
+  g.nombre_genero,
+  SUM(f.global_sales) AS ventas_por_anio
+FROM `vgsales_analisis_sql.fact_ventas_juegos` f
+LEFT JOIN `vgsales_analisis_sql.dim_generos` g 
+  ON f.id_genero = g.id_genero
+WHERE f.anio_lanzamiento IS NOT NULL
+GROUP BY f.anio_lanzamiento, g.nombre_genero
+ORDER BY f.anio_lanzamiento ASC, ventas_por_anio DESC;

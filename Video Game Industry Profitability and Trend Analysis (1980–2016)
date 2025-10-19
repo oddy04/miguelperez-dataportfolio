@@ -1,0 +1,70 @@
+# 🎮 Global Video Game Industry Performance Analysis (1980–2016)
+
+## 📘 Overview
+This project analyzes global video game sales from 1980 to 2016 using **Python (Pandas)** for data cleaning and **SQL (BigQuery)** for business insights.  
+It demonstrates the complete data analytics workflow — from cleaning and data modeling (star schema) to profitability and trend analysis.
+
+---
+
+## 🎯 Project Objectives
+- Design a **star schema** data model (fact and dimension tables).  
+- Clean and normalize data using **Python (Pandas)**.  
+- Load data into **BigQuery** and run SQL-based analysis.  
+- Identify patterns of **editorial profitability** and **genre trends** over time.
+
+---
+
+## 🛠️ Technologies Used
+- **Python (Pandas, Colab / Jupyter)**  
+- **SQL (Google BigQuery)**  
+- **Data Modeling (Star Schema)**  
+- **CSV** for integration between Python and BigQuery  
+
+---
+
+## 📂 Repository Structure
+
+---
+
+## 💡 Key Insights
+
+### 🏆 Profitability (CTE)
+- **Nintendo** achieved the highest average sales per title, reflecting strong IP management and brand dominance.  
+
+### 📈 Temporal Trends
+- In the last decade of the dataset, **Action** and **Shooter** genres led global sales.  
+- A steady decline was observed in classic genres such as **Sports** and **Platform** after 2010.
+
+---
+
+## 🧮 SQL Analysis
+The file [`game_sales_analysis.sql`](sql/game_sales_analysis.sql) contains three main sections:
+
+1. **Star Schema Validation**  
+   Joins between fact and dimension tables to ensure referential integrity.  
+
+2. **Profitability Analysis (CTEs)**  
+   Top 10 publishers ranked by average sales per title.  
+
+3. **Temporal Trends Analysis**  
+   Yearly and genre-based global sales trends.
+
+---
+
+## ⚙️ How to Reproduce the Project
+1. Run the notebook [`cleaning.ipynb`](notebooks/cleaning.ipynb) to clean and export CSVs.  
+2. Create a dataset in BigQuery: `vgsales_analisis_sql`.  
+3. Upload the CSVs (`fact_ventas_juegos`, `dim_editoriales`, `dim_generos`).  
+4. Execute the SQL queries from `game_sales_analysis.sql`.  
+
+---
+
+  
+
+---
+
+## ✍️ Author
+**Miguel Pérez**  
+Data Analyst | Python · SQL · Power BI  
+📧 mccerangelo25@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/miguel-perez-698b11232)
